@@ -1,0 +1,31 @@
+{
+  "name": "sooritravels-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive test automation suite for SOORI Travels using Playwright",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:e2e": "npx playwright test --project=e2e-chromium --project=e2e-firefox --project=e2e-webkit",
+    "test:api": "npx playwright test --project=api-tests",
+    "test:visual": "npx playwright test --project=visual-tests",
+    "test:a11y": "npx playwright test --project=accessibility-tests",
+    "test:performance": "npx playwright test --project=performance-tests",
+    "test:security": "npx playwright test --project=security-tests",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
+    "test:critical": "npx playwright test --grep @critical",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report",
+    "test:update-snapshots": "npx playwright test --update-snapshots",
+    "test:ci": "npx playwright test --reporter=html,junit",
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@axe-core/playwright": "^4.10.0",
+    "dotenv": "^16.4.7",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}

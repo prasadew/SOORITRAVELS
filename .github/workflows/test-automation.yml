@@ -48,7 +48,9 @@ jobs:
           DB_HOST: 127.0.0.1
           DB_NAME: soori_travels
           DB_USER: root
+          DB_PASS: root
           DB_PASSWORD: root
+          CI: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -114,6 +116,13 @@ jobs:
 
       - name: Start PHP Server
         run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -173,6 +182,13 @@ jobs:
 
       - name: Start PHP Server
         run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -231,6 +247,13 @@ jobs:
 
       - name: Start PHP Server
         run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

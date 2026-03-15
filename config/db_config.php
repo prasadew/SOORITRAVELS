@@ -4,10 +4,13 @@
  * Provides PDO connection with security best practices
  */
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'soori_travels');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Prefer environment variables for CI/deployments; keep local-friendly fallbacks.
+$isCi = getenv('CI') === 'true' || getenv('GITHUB_ACTIONS') === 'true';
+
+define('DB_HOST', getenv('DB_HOST') ?: ($isCi ? '127.0.0.1' : 'localhost'));
+define('DB_NAME', getenv('DB_NAME') ?: 'soori_travels');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: (getenv('DB_PASSWORD') ?: ($isCi ? 'root' : '')));
 define('DB_CHARSET', 'utf8mb4');
 
 /**

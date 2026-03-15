@@ -8,7 +8,8 @@ test.describe('Homepage @smoke @regression', () => {
   test('should load homepage successfully', async ({ homePage }) => {
     const title = await homePage.getTitle();
     expect(title).toBeTruthy();
-    await expect(homePage.page).toHaveURL(/.*SOORITRAVELS.*/i);
+    // Accept root deployments (e.g. http://localhost:8080/) and folder deployments.
+    await expect(homePage.page).toHaveURL(/\/(index\.php)?(\?.*)?$/i);
   });
 
   test('should display hero section', async ({ homePage }) => {
@@ -79,6 +80,10 @@ test.describe('Homepage @smoke @regression', () => {
       e => !e.includes('favicon') && !e.includes('firebase') && !e.includes('net::ERR')
         && !e.includes('Failed to load') && !e.includes('Failed to fetch')
         && !e.includes('404')
+        // External font CDN failures are non-functional and intermittent in CI.
+        && !e.toLowerCase().includes('downloadable font')
+        && !e.toLowerCase().includes('font-awesome')
+        && !e.toLowerCase().includes('font awesome')
     );
     expect(criticalErrors).toHaveLength(0);
   });
